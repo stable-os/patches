@@ -1,7 +1,7 @@
 From 850a9fb821e1bbfef9eba7c6f098f44bee28ef3d Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 09:40:56 +0200
-Subject: [PATCH 06/17] Allow patch workflow to run on workflow_dispatch
+Subject: [PATCH 06/18] Allow patch workflow to run on workflow_dispatch
 
 ---
  .github/workflows/patch.yml | 1 +

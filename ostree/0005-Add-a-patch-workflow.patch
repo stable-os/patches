@@ -1,7 +1,7 @@
 From 39ed23383b4dfadce02341fc8d62b4dcb1e9114f Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 09:39:45 +0200
-Subject: [PATCH 05/17] Add a patch workflow
+Subject: [PATCH 05/18] Add a patch workflow
 
 ---
  .github/workflows/patch.yml | 34 ++++++++++++++++++++++++++++++++++

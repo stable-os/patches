@@ -1,0 +1,28 @@
+From 0495e405002277e0f1088558c2ad4f3b1ded60a6 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 14:20:19 +0200
+Subject: [PATCH 24/24] Fix GitHub merge issue
+
+---
+ .github/workflows/patch.yml | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index f2b0da32..9841220c 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -9,11 +9,6 @@ jobs:
+   patch:
+     runs-on: ubuntu-latest
+ 
+-    permissions:
+-      contents: write
+-      actions: write
+-      workflows: write
+-
+     steps:
+       - name: Clone remote repository
+         uses: actions/checkout@v2
+-- 
+2.35.1
+

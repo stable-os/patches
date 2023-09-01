@@ -1,7 +1,7 @@
 From d4b7d1b0b2d412939721c9bd414c265ab9f69c08 Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 14:12:28 +0200
-Subject: [PATCH 22/23] Add github access token to checkouts
+Subject: [PATCH 22/24] Add github access token to checkouts
 
 ---
  .github/workflows/patch.yml | 4 ++--

@@ -23,7 +23,6 @@ index 90262a2c..dec9531e 100644
          uses: actions/checkout@v2
          with:
 +          token: ${{ secrets.WORKFLOW_PAT }}
-+          ref: e93ebd738598406cd8a8e57fdc341cf1f1d9baae
            repository: stable-os/patches
            path: patches
  

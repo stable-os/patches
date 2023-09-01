@@ -1,7 +1,7 @@
 From 668cd7429024f7731b62e96b8b71ea68c05cc2c3 Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 13:37:32 +0200
-Subject: [PATCH 16/22] Add PAT to patch workflow
+Subject: [PATCH 16/23] Add PAT to patch workflow
 
 ---
  .github/workflows/patch.yml | 4 ++++

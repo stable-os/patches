@@ -1,7 +1,7 @@
 From a988f807a0061bf8d0c28df6a1a6a2ca61fbc9be Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Thu, 31 Aug 2023 20:06:31 +0200
-Subject: [PATCH 02/22] Change bootloader entry title generator
+Subject: [PATCH 02/23] Change bootloader entry title generator
 
 ---
  src/libostree/ostree-sysroot-deploy.c | 77 ++++++++++++++++-----------

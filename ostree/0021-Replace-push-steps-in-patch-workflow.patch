@@ -1,7 +1,7 @@
 From 91b9717e8468ed3ef55070ed45513d9ded04d796 Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 14:05:03 +0200
-Subject: [PATCH 21/22] Replace push steps in patch workflow
+Subject: [PATCH 21/23] Replace push steps in patch workflow
 
 ---
  .github/workflows/patch.yml | 22 +++++++++++++++-------

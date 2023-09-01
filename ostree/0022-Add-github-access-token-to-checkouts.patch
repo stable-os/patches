@@ -1,0 +1,40 @@
+From d4b7d1b0b2d412939721c9bd414c265ab9f69c08 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 14:12:28 +0200
+Subject: [PATCH 22/22] Add github access token to checkouts
+
+---
+ .github/workflows/patch.yml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 90262a2c..dec9531e 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -17,12 +17,14 @@ jobs:
+       - name: Clone remote repository
+         uses: actions/checkout@v2
+         with:
++          token: ${{ secrets.WORKFLOW_PAT }}
+           repository: ostreedev/ostree
+           path: ostree
+ 
+       - name: Clone patches repository
+         uses: actions/checkout@v2
+         with:
++          token: ${{ secrets.WORKFLOW_PAT }}
+           repository: stable-os/patches
+           path: patches
+ 
+@@ -45,8 +47,6 @@ jobs:
+ 
+       - name: Commit changes
+         working-directory: ostree
+-        env:
+-          GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+         run: |
+           git config --global user.name "piano1029"
+           git config --global user.email "46605242+piano1029@users.noreply.github.com"
+-- 
+2.35.1
+

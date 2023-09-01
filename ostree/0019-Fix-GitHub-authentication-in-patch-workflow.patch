@@ -1,7 +1,7 @@
 From 67c201d12f5a8e54b833216a938193b0dc6eb982 Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 13:51:24 +0200
-Subject: [PATCH 19/20] Fix GitHub authentication in patch workflow
+Subject: [PATCH 19/21] Fix GitHub authentication in patch workflow
 
 ---
  .github/workflows/patch.yml | 8 +-------

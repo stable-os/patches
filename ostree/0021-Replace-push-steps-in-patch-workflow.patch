@@ -1,0 +1,51 @@
+From 91b9717e8468ed3ef55070ed45513d9ded04d796 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 14:05:03 +0200
+Subject: [PATCH 21/21] Replace push steps in patch workflow
+
+---
+ .github/workflows/patch.yml | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 3784a3a0..90262a2c 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -27,12 +27,13 @@ jobs:
+           path: patches
+ 
+       - name: Force push to current repository
+-        working-directory: ostree
+-        env:
+-          GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+-        run: |
+-          git remote set-url origin https://x-access-token:${{ secrets.WORKFLOW_PAT }}@github.com/stable-os/ostree.git
+-          git push --force origin HEAD
++        uses: ad-m/github-push-action@master
++        with:
++          github_token: ${{ secrets.WORKFLOW_PAT }}
++          branch: HEAD
++          force: true
++          directory: ostree
++          repository: stable-os/ostree
+ 
+       - name: Apply patch file
+         working-directory: ostree
+@@ -51,4 +52,11 @@ jobs:
+           git config --global user.email "46605242+piano1029@users.noreply.github.com"
+           git add .
+           git commit -m "Applied patch files"
+-          git push origin HEAD
+\ No newline at end of file
++
++      - name: Push to current repository
++        uses: ad-m/github-push-action@master
++        with:
++          github_token: ${{ secrets.WORKFLOW_PAT }}
++          branch: HEAD
++          directory: ostree
++          repository: stable-os/ostree
+\ No newline at end of file
+-- 
+2.35.1
+

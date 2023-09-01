@@ -1,0 +1,58 @@
+name: OSTree Rust extension API
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone remote repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKFLOW_PAT }}
+          repository: ostreedev/ostree-rs-ext
+          path: ostree-rs-ext
+
+      - name: Clone patches repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKFLOW_PAT }}
+          repository: stable-os/patches
+          path: patches
+
+      - name: Force push to current repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.WORKFLOW_PAT }}
+          branch: main
+          force: true
+          directory: ostree-rs-ext
+          repository: stable-os/ostree-rs-ext
+
+      - name: Apply patch file
+        working-directory: ostree-rs-ext
+        run: git apply ../patches/ostree-rs-ext/*.patch
+
+      - name: debug
+        working-directory: ostree-rs-ext
+        run: ls .github/workflows
+
+      - name: Commit changes
+        working-directory: ostree-rs-ext
+        run: |
+          git config --global user.name "piano1029"
+          git config --global user.email "46605242+piano1029@users.noreply.github.com"
+          git add .
+          git commit -m "Applied patch files"
+
+      - name: Push to current repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.WORKFLOW_PAT }}
+          branch: main
+          directory: ostree-rs-ext
+          repository: stable-os/ostree-rs-ext

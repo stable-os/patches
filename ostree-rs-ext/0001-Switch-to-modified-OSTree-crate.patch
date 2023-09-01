@@ -1,0 +1,25 @@
+From 044ed99ec26f233e4cd22aa47ad46d5c275e0996 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 14:51:48 +0200
+Subject: [PATCH] Switch to modified OSTree crate
+
+---
+ lib/Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Cargo.toml b/lib/Cargo.toml
+index 1a75d63..187056e 100644
+--- a/lib/Cargo.toml
++++ b/lib/Cargo.toml
+@@ -31,7 +31,7 @@ once_cell = "1.9"
+ libc = "0.2.92"
+ libsystemd = "0.5.0"
+ openssl = "0.10.33"
+-ostree = { features = ["v2022_5", "cap-std-apis"], version = "0.18.0" }
++ostree = { features = ["v2022_5", "cap-std-apis"], git = "https://github.com/stable-os/ostree.git" }
+ pin-project = "1.0"
+ regex = "1.5.4"
+ rustix = { version = "0.37.19", features = ["fs", "process"] }
+-- 
+2.35.1
+

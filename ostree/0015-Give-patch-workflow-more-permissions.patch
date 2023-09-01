@@ -1,0 +1,27 @@
+From c2657e22ca298d00b798237a44d4f212eaee1e0f Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 10:04:45 +0200
+Subject: [PATCH 15/15] Give patch workflow more permissions
+
+---
+ .github/workflows/patch.yml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 0baceeec..7c92dea5 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -9,6 +9,10 @@ jobs:
+   patch:
+     runs-on: ubuntu-latest
+ 
++    permissions:
++      contents: write
++      actions: write
++
+     steps:
+       - name: Clone remote repository
+         uses: actions/checkout@v2
+-- 
+2.35.1
+

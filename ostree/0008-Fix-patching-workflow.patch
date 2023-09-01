@@ -1,7 +1,7 @@
 From 814ea508bd83c1991fcf7102b6e20af88e05593b Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 09:51:07 +0200
-Subject: [PATCH 08/15] Fix patching workflow
+Subject: [PATCH 08/16] Fix patching workflow
 
 ---
  .github/workflows/patch.yml | 12 +++++++++++-

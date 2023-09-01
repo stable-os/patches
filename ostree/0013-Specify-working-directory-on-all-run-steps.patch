@@ -1,7 +1,7 @@
 From 13c62a0be8b585228b185747eb6cf87b39d53011 Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 10:00:05 +0200
-Subject: [PATCH 13/15] Specify working-directory on all run steps
+Subject: [PATCH 13/16] Specify working-directory on all run steps
 
 ---
  .github/workflows/patch.yml | 22 +++++++++++++---------

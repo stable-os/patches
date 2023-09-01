@@ -1,0 +1,37 @@
+From 67c201d12f5a8e54b833216a938193b0dc6eb982 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 13:51:24 +0200
+Subject: [PATCH 19/19] Fix GitHub authentication in patch workflow
+
+---
+ .github/workflows/patch.yml | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index f5cfd552..4dab2d33 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -25,19 +25,13 @@ jobs:
+         with:
+           repository: stable-os/patches
+           path: patches
+-      
+-      - name: Configure Git credentials
+-        run: |
+-          git config --global credential.helper store
+-          git config --global credential.helper 'cache --timeout=3600'
+-          git config --global http.https://github.com/.extraheader "AUTHORIZATION: bearer ${{ secrets.WORKFLOW_PAT }}"
+ 
+       - name: Force push to current repository
+         working-directory: ostree
+         env:
+           GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+         run: |
+-          git remote set-url origin https://github.com/stable-os/ostree.git
++          git remote set-url origin https://x-access-token:${{ secrets.WORKFLOW_PAT }}github.com/stable-os/ostree.git
+           git push --force origin HEAD
+ 
+       - name: Apply patch file
+-- 
+2.35.1
+

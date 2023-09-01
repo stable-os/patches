@@ -1,0 +1,50 @@
+From d3332fdde7150b0e618b7041b7c467fa29e991f5 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 10:01:58 +0200
+Subject: [PATCH 14/14] Clean the patch workflow up
+
+---
+ .github/workflows/patch.yml | 18 +++---------------
+ 1 file changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 39c48a38..0baceeec 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -22,23 +22,11 @@ jobs:
+           repository: stable-os/patches
+           path: patches
+ 
+-      # - run: ls .
+-      # - run: ls patches
+-      # - run: ls patches/ostree
+-
+-      # - name: Move into OSTree folder
+-      #   run: cd ostree
+-
+-      # - run: ls .
+-      # - run: ls ../
+-      # - run: ls ../patches
+-      # - run: ls ../patches/ostree
+-
+       - name: Force push to current repository
+         working-directory: ostree
+         run: |
+-          echo git remote set-url origin https://github.com/stable-os/ostree.git
+-          echo git push --force origin HEAD
++          git remote set-url origin https://github.com/stable-os/ostree.git
++          git push --force origin HEAD
+ 
+       - name: Apply patch file
+         working-directory: ostree
+@@ -55,4 +43,4 @@ jobs:
+           git config --global user.email "46605242+piano1029@users.noreply.github.com"
+           git add .
+           git commit -m "Applied patch files"
+-          echo git push origin HEAD
+\ No newline at end of file
++          git push origin HEAD
+\ No newline at end of file
+-- 
+2.35.1
+

@@ -1,0 +1,26 @@
+From 3e74c69e6620a0806f69f9272debd47cff581b1f Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 09:53:05 +0200
+Subject: [PATCH 09/14] Try to fix the workflow
+
+---
+ .github/workflows/patch.yml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index b6b39127..92589a5b 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -22,6 +22,9 @@ jobs:
+           repository: stable-os/patches
+           path: patches
+ 
++      - run: ls patches
++      - run: ls patches/ostree
++
+       - name: Move into OSTree folder
+         run: cd ostree
+ 
+-- 
+2.35.1
+

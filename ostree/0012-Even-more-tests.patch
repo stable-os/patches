@@ -1,0 +1,24 @@
+From 7689f39be6825744955b40d52d16fb7efef64b05 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 09:57:36 +0200
+Subject: [PATCH 12/14] Even more tests
+
+---
+ .github/workflows/patch.yml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 425dd0f1..7060d496 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -29,6 +29,7 @@ jobs:
+       - name: Move into OSTree folder
+         run: cd ostree
+ 
++      - run: ls .
+       - run: ls ../
+       - run: ls ../patches
+       - run: ls ../patches/ostree
+-- 
+2.35.1
+

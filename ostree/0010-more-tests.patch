@@ -1,0 +1,27 @@
+From f1bf5628cecbf02c06d9d652796cd5bc41625cba Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 09:54:28 +0200
+Subject: [PATCH 10/14] more tests
+
+---
+ .github/workflows/patch.yml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 92589a5b..9246f639 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -28,6 +28,10 @@ jobs:
+       - name: Move into OSTree folder
+         run: cd ostree
+ 
++      - run: ls ../
++      - run: ls ../patches
++      - run: ls ../patches/ostree
++
+       - name: Force push to current repository
+         run: |
+           echo git remote set-url origin https://github.com/stable-os/ostree.git
+-- 
+2.35.1
+

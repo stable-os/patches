@@ -1,0 +1,60 @@
+From 13c62a0be8b585228b185747eb6cf87b39d53011 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 10:00:05 +0200
+Subject: [PATCH 13/14] Specify working-directory on all run steps
+
+---
+ .github/workflows/patch.yml | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 7060d496..39c48a38 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -22,30 +22,34 @@ jobs:
+           repository: stable-os/patches
+           path: patches
+ 
+-      - run: ls .
+-      - run: ls patches
+-      - run: ls patches/ostree
++      # - run: ls .
++      # - run: ls patches
++      # - run: ls patches/ostree
+ 
+-      - name: Move into OSTree folder
+-        run: cd ostree
++      # - name: Move into OSTree folder
++      #   run: cd ostree
+ 
+-      - run: ls .
+-      - run: ls ../
+-      - run: ls ../patches
+-      - run: ls ../patches/ostree
++      # - run: ls .
++      # - run: ls ../
++      # - run: ls ../patches
++      # - run: ls ../patches/ostree
+ 
+       - name: Force push to current repository
++        working-directory: ostree
+         run: |
+           echo git remote set-url origin https://github.com/stable-os/ostree.git
+           echo git push --force origin HEAD
+ 
+       - name: Apply patch file
++        working-directory: ostree
+         run: git apply ../patches/ostree/*.patch
+ 
+       - name: debug
++        working-directory: ostree
+         run: ls .github/workflows
+ 
+       - name: Commit changes
++        working-directory: ostree
+         run: |
+           git config --global user.name "piano1029"
+           git config --global user.email "46605242+piano1029@users.noreply.github.com"
+-- 
+2.35.1
+

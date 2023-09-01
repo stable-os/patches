@@ -1,0 +1,1 @@
+This bundle of patches simplifies the boot loader entry titles.

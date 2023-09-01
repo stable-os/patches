@@ -1,0 +1,107 @@
+From a988f807a0061bf8d0c28df6a1a6a2ca61fbc9be Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Thu, 31 Aug 2023 20:06:31 +0200
+Subject: [PATCH 2/7] Change bootloader entry title generator
+
+---
+ src/libostree/ostree-sysroot-deploy.c | 77 ++++++++++++++++-----------
+ 1 file changed, 46 insertions(+), 31 deletions(-)
+
+diff --git a/src/libostree/ostree-sysroot-deploy.c b/src/libostree/ostree-sysroot-deploy.c
+index 6820850f..d0f35157 100644
+--- a/src/libostree/ostree-sysroot-deploy.c
++++ b/src/libostree/ostree-sysroot-deploy.c
+@@ -2014,44 +2014,59 @@ install_deployment_kernel (OstreeSysroot *sysroot, int new_bootversion,
+     return glnx_throw (error, "No PRETTY_NAME or ID in /etc/os-release");
+ 
+   g_autofree char *deployment_version = NULL;
+-  if (repo)
+-    {
+-      /* Try extracting a version for this deployment. */
+-      const char *csum = ostree_deployment_get_csum (deployment);
+-      g_autoptr (GVariant) variant = NULL;
+-      g_autoptr (GVariant) metadata = NULL;
+-
+-      /* XXX Copying ot_admin_checksum_version() + bits from
+-       *     ot-admin-builtin-status.c.  Maybe this should be
+-       *     public API in libostree? */
+-      if (ostree_repo_load_variant (repo, OSTREE_OBJECT_TYPE_COMMIT, csum, &variant, NULL))
+-        {
+-          metadata = g_variant_get_child_value (variant, 0);
+-          (void)g_variant_lookup (metadata, OSTREE_COMMIT_META_KEY_VERSION, "s",
+-                                  &deployment_version);
+-        }
+-    }
++  // if (repo)
++  //   {
++  //     /* Try extracting a version for this deployment. */
++  //     const char *csum = ostree_deployment_get_csum (deployment);
++  //     g_autoptr (GVariant) variant = NULL;
++  //     g_autoptr (GVariant) metadata = NULL;
++
++  //     /* XXX Copying ot_admin_checksum_version() + bits from
++  //      *     ot-admin-builtin-status.c.  Maybe this should be
++  //      *     public API in libostree? */
++  //     if (ostree_repo_load_variant (repo, OSTREE_OBJECT_TYPE_COMMIT, csum, &variant, NULL))
++  //       {
++  //         metadata = g_variant_get_child_value (variant, 0);
++  //         (void)g_variant_lookup (metadata, OSTREE_COMMIT_META_KEY_VERSION, "s",
++  //                                 &deployment_version);
++  //       }
++  //   }
+ 
+   /* XXX The SYSLINUX bootloader backend actually parses the title string
+    *     (specifically, it looks for the substring "(ostree"), so further
+    *     changes to the title format may require updating that backend. */
+-  g_autoptr (GString) title_key = g_string_new (os_pretty_name);
+-  if (deployment_version && *deployment_version && !strstr (os_pretty_name, deployment_version))
+-    {
+-      g_string_append_c (title_key, ' ');
+-      g_string_append (title_key, deployment_version);
+-    }
+-  g_string_append (title_key, " (ostree");
+-  if (show_osname)
+-    {
+-      g_string_append_c (title_key, ':');
+-      g_string_append (title_key, osname);
++  g_autoptr (GString) title_key = g_string_new ("");
++
++  if (deployment.staged) {
++    g_string_append (title_key, "Update ");
++    g_string_append (title_key, os_pretty_name);
++  } else {
++    if (deployment.index == 0) {
++      g_string_append (title_key, "Start ");
++      g_string_append (title_key, os_pretty_name);
++    } else {
++      g_string_append (title_key, "Rollback");
+     }
++  }
+ 
+-  g_string_append_printf (title_key, ":%d", ostree_deployment_get_index (deployment));
+-
+-  g_string_append_c (title_key, ')');
++  // if (deployment_version && *deployment_version && !strstr (os_pretty_name, deployment_version))
++  //   {
++  //     g_string_append_c (title_key, ' ');
++  //     g_string_append (title_key, deployment_version);
++  //   }
++  // g_string_append (title_key, " (ostree");
++  // if (show_osname)
++  //   {
++  //     g_string_append_c (title_key, ':');
++  //     g_string_append (title_key, osname);
++  //   }
++
++  // g_string_append_printf (title_key, ":%d", ostree_deployment_get_index (deployment));
++
++  // g_string_append_c (title_key, ')');
++  // Set title
+   ostree_bootconfig_parser_set (bootconfig, "title", title_key->str);
++  /* end of title! */
+ 
+   g_autofree char *version_key
+       = g_strdup_printf ("%d", n_deployments - ostree_deployment_get_index (deployment));
+-- 
+2.35.1
+

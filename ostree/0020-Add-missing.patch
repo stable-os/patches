@@ -1,0 +1,25 @@
+From 3e667a0c69bb9b4d39d0ccc3c4a480e91edd7b67 Mon Sep 17 00:00:00 2001
+From: piano1029 <46605242+piano1029@users.noreply.github.com>
+Date: Fri, 1 Sep 2023 13:53:03 +0200
+Subject: [PATCH 20/20] Add missing @
+
+---
+ .github/workflows/patch.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/patch.yml b/.github/workflows/patch.yml
+index 4dab2d33..3784a3a0 100644
+--- a/.github/workflows/patch.yml
++++ b/.github/workflows/patch.yml
+@@ -31,7 +31,7 @@ jobs:
+         env:
+           GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+         run: |
+-          git remote set-url origin https://x-access-token:${{ secrets.WORKFLOW_PAT }}github.com/stable-os/ostree.git
++          git remote set-url origin https://x-access-token:${{ secrets.WORKFLOW_PAT }}@github.com/stable-os/ostree.git
+           git push --force origin HEAD
+ 
+       - name: Apply patch file
+-- 
+2.35.1
+

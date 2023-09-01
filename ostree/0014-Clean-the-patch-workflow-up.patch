@@ -1,7 +1,7 @@
 From d3332fdde7150b0e618b7041b7c467fa29e991f5 Mon Sep 17 00:00:00 2001
 From: piano1029 <46605242+piano1029@users.noreply.github.com>
 Date: Fri, 1 Sep 2023 10:01:58 +0200
-Subject: [PATCH 14/19] Clean the patch workflow up
+Subject: [PATCH 14/20] Clean the patch workflow up
 
 ---
  .github/workflows/patch.yml | 18 +++---------------
